@@ -34,8 +34,8 @@ int random_range_naive1 (int min, int max) {
 __attribute__ ((leaf, nothrow, warn_unused_result))
 int random_range_naive2 (int min, int max) {
 	int     n  = range (min, max);
-	double tmp = (double) rand ();
-	double ret = tmp / RAND_MAX * n;
+	int    tmp = rand ();
+	double ret = (double) tmp / (double) RAND_MAX * (double) n;
 	return (int) ret;
 }
 
