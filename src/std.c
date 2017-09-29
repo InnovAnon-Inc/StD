@@ -20,7 +20,7 @@
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
 int range (int min, int max) {
-	return max - min + 1
+	return max - min + 1;
 }
 
 /* https://stackoverflow.com/questions/5008804/generating-random-integer-from-a-range */
@@ -33,6 +33,7 @@ int random_range_naive1 (int min, int max) {
 
 __attribute__ ((leaf, nothrow, warn_unused_result))
 int random_range_naive2 (int min, int max) {
+	int     n  = range (min, max);
 	double tmp = (double) rand ();
 	double ret = tmp / RAND_MAX * n;
 	return (int) ret;
