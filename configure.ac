@@ -1,4 +1,5 @@
 AC_INIT([libstd], [0.0], [laurence.a.maddox@gmail.com])
+AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 AM_PROG_AR
@@ -9,13 +10,16 @@ AC_CONFIG_FILES([
  src/Makefile
 ])
 AC_CONFIG_MACRO_DIR([m4])
+#AC_CONFIG_SUBDIRS([glitter ZePaSt])
 AC_CONFIG_SUBDIRS([glitter])
 
 AC_CHECK_HEADERS([stdlib.h sys/types.h string.h])
+#AC_CHECK_HEADERS([glitter.h sum.h])
 AC_CHECK_HEADERS([glitter.h])
 
 AC_CHECK_LIB([stdlib],[malloc,free])
 AC_CHECK_LIB([stdlib],[memcpy])
+#AC_CHECK_LIB([sum],[ezr_sum])
 
 INNOVANON_WARNINGS([])
 

@@ -2,13 +2,15 @@ lib_LTLIBRARIES =
 include_HEADERS =
 bin_PROGRAMS    =
 
+LIBSTD_LIBADD =
+
 lib_LTLIBRARIES += libstd.la
-libstd_la_SOURCES = std.c
-#libarray_la_LIBADD = -lswap
+libstd_la_LIBADD = $(LIBSTAT_LIBADD)
 include_HEADERS += std.h
-bin_PROGRAMS += std
-std_SOURCES = std-test.c
-std_LDADD = libstd.la
+bin_PROGRAMS += std-test
+std_LDADD = libstd.la $(LIBSTD_LIBADD)
 
 AM_CPPFLAGS = -D__STDC_INT64__
-AM_CPPFLAGS += -I $(srcdir)/../glitter/src
+
+SUBDIRS = ../glitter
+AM_CPPFLAGS += -I ../glitter/src

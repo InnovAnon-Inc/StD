@@ -32,6 +32,11 @@ void ez_random_ranges (int dest[], size_t n,
 	int min, int max)
 __attribute__ ((nonnull (1), nothrow)) ;
 
+typedef __attribute__ (())
+int (*init_struct_field_t) (void *restrict field, void *restrict arg) ;
+
+int init_struct (init_struct_field_t cbs[], size_t ncb) ;
+
 #ifdef __cplusplus
 }
 #endif
