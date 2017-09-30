@@ -17,7 +17,7 @@
 /*#include <math.h>*/
 #include <swap.h>
 
-#include <std.h>
+#include <simon.h>
 
 TODO (struct std with RNG + seed etc)
 

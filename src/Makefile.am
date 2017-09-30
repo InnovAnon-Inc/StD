@@ -9,8 +9,8 @@ bin_PROGRAMS    =
 
 include Makefile-LIBADD.inc
 
-lib_LTLIBRARIES += libstd.la
-libstd_la_LIBADD = $(LIBSTAT_LIBADD)
-include_HEADERS += std.h
-bin_PROGRAMS += std-test
-std_LDADD = libstd.la $(LIBSTD_LIBADD)
+lib_LTLIBRARIES += libsimon.la
+libsimon_la_LIBADD = $(LIBSTAT_LIBADD)
+include_HEADERS += simon.h
+bin_PROGRAMS += simon-test
+simon_LDADD = libsimon.la $(LIBSIMON_LIBADD)

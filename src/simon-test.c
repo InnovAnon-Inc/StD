@@ -15,7 +15,7 @@
 
 /*#include <math.h>*/
 
-#include <std.h>
+#include <simon.h>
 
 __attribute__ ((nothrow, warn_unused_result))
 int main (void) {

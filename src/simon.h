@@ -1,5 +1,5 @@
-#ifndef _STD_H_
-#define _STD_H_
+#ifndef _SIMON_H_
+#define _SIMON_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,4 +41,4 @@ int init_struct (init_struct_field_t cbs[], size_t ncb) ;
 }
 #endif
 
-#endif /* _STD_H_ */
+#endif /* _SIMON_H_ */
