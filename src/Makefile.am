@@ -7,7 +7,7 @@ lib_LTLIBRARIES =
 include_HEADERS =
 bin_PROGRAMS    =
 
-LIBSTD_LIBADD =
+include Makefile-LIBADD.inc
 
 lib_LTLIBRARIES += libstd.la
 libstd_la_LIBADD = $(LIBSTAT_LIBADD)
