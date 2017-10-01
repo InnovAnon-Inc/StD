@@ -22,7 +22,7 @@
 TODO (struct std with RNG + seed etc)
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
-int range (int min, int max) {
+int range_int (int min, int max) {
 	return max - min + 1;
 }
 

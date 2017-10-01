@@ -12,7 +12,7 @@ extern "C" {
 typedef __attribute__ ((warn_unused_result))
 int (*random_range_t) (int min, int max) ;
 
-int range (int min, int max)
+int range_int (int min, int max)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
 int random_range_naive1 (int min, int max)
