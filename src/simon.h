@@ -40,7 +40,7 @@ TODO (this algorihtm is probably seriously flawed)
 size_t random_range_java_size_t (size_t min, size_t max)
 __attribute__ ((nothrow, warn_unused_result)) ;
 
-typedef __attribute__ ((nonnull (1, 2), pure, warn_unused_result))
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
 int (*cmp_t) (void const *restrict, void const *restrict) ;
 
 void random_range_naive_generic (void *restrict dest, size_t esz,
