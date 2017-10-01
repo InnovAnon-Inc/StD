@@ -28,11 +28,17 @@ int range (int min, int max) {
 
 /* https://stackoverflow.com/questions/5008804/generating-random-integer-from-a-range */
 
-/* probabilities are slightly skewed */
 __attribute__ ((leaf, nothrow, warn_unused_result))
+int random_range_off_naive1 (int r, int off) {
+	TODO (allow other RNGs)
+	return off + (rand () % r);
+}
+
+/* probabilities are slightly skewed */
+__attribute__ ((nothrow, warn_unused_result))
 int random_range_naive1 (int min, int max) {
 	TODO (allow other RNGs)
-	return min + (rand () % range (min, max));
+	return random_range_off_naive1 (range (min, max), min);
 }
 
 /* the "skew" is a bit better distributed here */
@@ -47,14 +53,17 @@ int random_range_naive2 (int min, int max) {
 /* warning: there's some sort of effect due to the interaction of this algo
  * and some pRNGs */
 __attribute__ ((leaf, nothrow, warn_unused_result))
-int random_range_java (int min, int max) {
-	int n = range (min, max);
+int random_range_off_java (int n, int off) {
 	int r = RAND_MAX % n;
 	int d = RAND_MAX - r;
 	int x;
 	do x = rand ();
 	while (x >= d);
-	return min + x % n;
+	return off + x % n;
+}
+__attribute__ ((nothrow, warn_unused_result))
+int random_range_java (int min, int max) {
+	return random_range_off_java (range (min, max), min);
 }
 
 __attribute__ ((nonnull (1, 3), nothrow))
@@ -88,6 +97,7 @@ ssize_t range_size_t (ssize_t min, ssize_t max) {
 }
 
 TODO (this algorihtm is probably seriously flawed)
+__attribute__ ((nothrow, warn_unused_result))
 size_t random_range_java_size_t (size_t min, size_t max) {
 	size_t n = range_size_t (min, max);
 	size_t r = n % (size_t) RAND_MAX;
@@ -99,9 +109,7 @@ size_t random_range_java_size_t (size_t min, size_t max) {
 	return min + *(size_t *) x % n;
 }
 
-typedef __attribute__ ((nonnull (1, 2), pure, warn_unused_result))
-int (*cmp_t) (void const *restrict, void const *restrict) ;
-
+__attribute__ ((nonnull (1, 3, 4, 5), nothrow))
 void random_range_naive_generic (void *restrict dest, size_t esz,
 	cmp_t cmp, void const *restrict min, void const *restrict max) {
 	do ez_random_ranges (dest, esz, 0, CHAR_MAX);
@@ -112,7 +120,7 @@ void random_range_naive_generic (void *restrict dest, size_t esz,
 
 
 
-
+/*
 __attribute__ ((leaf, nonnull (1, 2, 3), nothrow, warn_unused_result))
 int init_struct (init_struct_field_t const cbs[],
 	void *restrict const fields[],
@@ -123,16 +131,24 @@ int init_struct (init_struct_field_t const cbs[],
 			return -1;
 	return 0;
 }
+*/
+/*
+void *restrict random_element () {
 
+}
+*/
+/*
 int random_operation (void *restrict ds, stdcb_t cbs[], void *restrict args[], size_t ncb) {
 	size_t i = random_range_java_size_t (0, ncb - 1);
 	return cbs[i] (ds, args[i]);
 }
-
+*/
+/*
 int random_operation (void *restrict ds, stdcb_t cbs[], void *restrict args[], size_t ncb) {
 	size_t i = random_range_java_size_t (0, ncb - 1);
 	return cbs[i] (ds, args[i]);
 }
+*/
 
 /* init
  * vs
@@ -148,10 +164,11 @@ int random_operation (void *restrict ds, stdcb_t cbs[], void *restrict args[], s
 
 TODO (print_cb instead of hardcoded type and format string)
 TODO (snprintf)
+/*
 static void data_print (void const *restrict data,
    size_t i, size_t j) {
    fprintf (stderr, "["); fflush (stderr);
-   /*if (array->n != 0) {*/
+   / *if (array->n != 0) {* /
    if (i != j) {
       fprintf (stderr, "%d", ((int const *restrict) data)[i]); fflush (stderr);
       for (i++; i != j; i++)
@@ -159,3 +176,4 @@ static void data_print (void const *restrict data,
    }
    fprintf (stderr, "]\n"); fflush (stderr);
 }
+*/
