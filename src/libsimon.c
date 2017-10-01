@@ -92,7 +92,12 @@ void ez_random_ranges (int dest[], size_t n,
 }
 
 __attribute__ ((const, leaf, nothrow, warn_unused_result))
-ssize_t range_size_t (ssize_t min, ssize_t max) {
+ssize_t range_ssize_t (ssize_t min, ssize_t max) {
+	return max - min + 1;
+}
+
+__attribute__ ((const, leaf, nothrow, warn_unused_result))
+size_t range_size_t (size_t min, size_t max) {
 	return max - min + 1;
 }
 

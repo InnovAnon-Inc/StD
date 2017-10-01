@@ -15,10 +15,16 @@ int (*random_range_t) (int min, int max) ;
 int range_int (int min, int max)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
+int random_range_off_naive1 (int r, int off)
+__attribute__ ((leaf, nothrow, warn_unused_result)) ;
+
 int random_range_naive1 (int min, int max)
 __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 
 int random_range_naive2 (int min, int max)
+__attribute__ ((leaf, nothrow, warn_unused_result)) ;
+
+int random_range_off_java (int n, int off)
 __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 
 int random_range_java (int min, int max)
@@ -35,6 +41,12 @@ __attribute__ ((nonnull (1, 3), nothrow)) ;
 void ez_random_ranges (int dest[], size_t n,
 	int min, int max)
 __attribute__ ((nonnull (1), nothrow)) ;
+
+ssize_t range_ssize_t (ssize_t min, ssize_t max)
+__attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+
+size_t range_size_t (size_t min, size_t max)
+__attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
 TODO (this algorihtm is probably seriously flawed)
 size_t random_range_java_size_t (size_t min, size_t max)
