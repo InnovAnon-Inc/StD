@@ -30,7 +30,7 @@ int main (void) {
    srand ((unsigned int) t);
 
    ez_random_ranges (nums, ARRSZ (nums), 10, 20);
-   data_print (nums, (size_t) 0, ARRSZ (nums));
+   /*data_print (nums, (size_t) 0, ARRSZ (nums));*/
 
    fputs ("success", stderr); fflush (stderr);
 
