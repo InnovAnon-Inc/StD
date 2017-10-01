@@ -106,7 +106,7 @@ __attribute__ ((nothrow, warn_unused_result))
 size_t random_range_java_size_t (size_t min, size_t max) {
 	size_t n = range_size_t (min, max);
 	size_t r = n % (size_t) RAND_MAX;
-	size_t d = abs ((size_t) RAND_MAX - r);
+	size_t d = abs ((int) ((size_t) RAND_MAX - r));
 	/* assumes sizeof (size_t) % sizeof (char) == 0 */
 	char x[sizeof (size_t) / sizeof (char)];
 	do ez_random_ranges (x, sizeof (size_t), 0, CHAR_MAX);
