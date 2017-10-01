@@ -28,7 +28,7 @@ void random_ranges (int dest[], size_t n,
 	random_range_t cb, int min, int max)
 __attribute__ ((nonnull (1, 3), nothrow)) ;
 
-void random_ranges_uniq_knuth (int dest[], size_t n
+void random_ranges_uniq_knuth (int dest[], size_t n,
 	random_range_t cb, int min, int max, int tmp[])
 __attribute__ ((nonnull (1, 3), nothrow)) ;
 
