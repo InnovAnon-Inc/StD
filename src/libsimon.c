@@ -262,6 +262,23 @@ int random_operation (void *restrict ds, stdcb_t cbs[], void *restrict args[], s
 }
 */
 
+__attribute__ ((nonnull (1, 2), nothrow, warn_unused_result))
+int random_op (void *restrict ds, stdcb_t const tests[], size_t ntest) {
+   size_t j = random_range_java_size_t2 ((size_t) 0, ntest);
+   assert (j <= ntest);
+   error_check (tests[j] (arg) != 0) return -1;
+   return 0;
+}
+
+__attribute__ ((nonnull (1, 2), nothrow, warn_unused_result))
+int random_ops (void *restrict ds, stdcb_t const tests[], size_t ntest,
+	unsigned int n) {
+	unsigned int i;
+	for (i = 0; i != n; i++)
+		error_check (random_op (ds, tests, ntest) != 0) return -1;
+	return 0;
+}
+
 /* init
  * vs
  * alloc + free

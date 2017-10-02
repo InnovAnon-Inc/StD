@@ -81,6 +81,13 @@ __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 int random_range_off_java2 (unsigned int n, int off)
 __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 
+int random_op (void *restrict ds, stdcb_t const tests[], size_t ntest)
+__attribute__ ((nonnull (1, 2), nothrow, warn_unused_result)) ;
+
+int random_ops (void *restrict ds, stdcb_t const tests[], size_t ntest,
+	unsigned int n)
+__attribute__ ((nonnull (1, 2), nothrow, warn_unused_result)) ;
+
 #ifdef __cplusplus
 }
 #endif
