@@ -88,6 +88,45 @@ int random_range_off_java (unsigned int n, int off) {
 	assert (r <= off + (int) n);
 	return r;
 }
+
+__attribute__ ((const, leaf, nothrow, warn_unused_result))
+int range_int2 (int min, int max) {
+	int ret;
+	assert (min <= max);
+	ret = max - min + 1;
+	assert (ret >= 0);
+	return ret;
+}
+
+__attribute__ ((leaf, nothrow, warn_unused_result))
+int random_range_java2 (int min, int max) {
+	int r = range_int2 (min, max);
+	return random_range_off_java2 (r, min);
+}
+
+__attribute__ ((leaf, nothrow, warn_unused_result))
+int random_range_off_java2 (unsigned int n, int off) {
+	int r = RAND_MAX % (int) n;
+	int d = RAND_MAX - (int) r;
+	int x;
+	do x = rand ();
+	while (x >= d);
+	r = off + x % (int) n;
+	return r;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 __attribute__ ((nothrow, warn_unused_result))
 int random_range_java (int min, int max) {
 	unsigned int r = range_int (min, max);

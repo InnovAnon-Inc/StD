@@ -72,6 +72,15 @@ int (*init_struct_field_t) (void *restrict field, void *restrict arg) ;
 int init_struct (init_struct_field_t cbs[], size_t ncb) ;
 */
 
+int range_int2 (int min, int max)
+__attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
+
+int random_range_java2 (int min, int max)
+__attribute__ ((leaf, nothrow, warn_unused_result)) ;
+
+int random_range_off_java2 (unsigned int n, int off)
+__attribute__ ((leaf, nothrow, warn_unused_result)) ;
+
 #ifdef __cplusplus
 }
 #endif
