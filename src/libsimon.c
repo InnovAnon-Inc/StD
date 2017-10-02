@@ -86,7 +86,7 @@ int random_range_off_java (unsigned int n, int off) {
 }
 __attribute__ ((nothrow, warn_unused_result))
 int random_range_java (int min, int max) {
-	int ret = random_range_off_java (range (min, max), min);
+	int ret = random_range_off_java (range_int (min, max), min);
 	assert (min <= ret);
 	assert (ret <= max);
 	return ret;
@@ -142,9 +142,15 @@ size_t random_range_java_size_t (size_t min, size_t max) {
 }
 
 size_t random_range_java_size_t2 (size_t min, size_t max) {
-	assert (min < max);
-	assert
-	return random_range_java ();
+	int tmp;
+	size_t ret;
+	assert (min <= max);
+	assert (max <= SIZE_MAX);
+	tmp = (int) random_range_java ((int) min, (int) max);
+	ret = tmp;
+	assert (min <= ret);
+	assert (ret <= max);
+	return ret;
 }
 
 __attribute__ ((nonnull (1, 3, 4, 5), nothrow))
