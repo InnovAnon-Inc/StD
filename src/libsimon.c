@@ -147,8 +147,8 @@ size_t random_range_java_size_t2 (size_t min, size_t max) {
 	int tmp;
 	size_t ret;
 	assert (min <= max);
-	assert (max <= SIZE_MAX);
-	tmp = (int) random_range_java ((int) min, (int) max);
+	assert (max <= INT_MAX);
+	tmp = random_range_java ((int) min, (int) max);
 	ret = (size_t) tmp;
 	assert (min <= ret);
 	assert (ret <= max);
