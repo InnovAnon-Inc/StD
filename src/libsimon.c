@@ -101,7 +101,7 @@ int range_int2 (int min, int max) {
 __attribute__ ((leaf, nothrow, warn_unused_result))
 int random_range_java2 (int min, int max) {
 	int r = range_int2 (min, max);
-	return random_range_off_java2 (r, min);
+	return random_range_off_java2 ((unsigned int) r, min);
 }
 
 __attribute__ ((leaf, nothrow, warn_unused_result))
