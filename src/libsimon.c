@@ -264,7 +264,7 @@ int random_operation (void *restrict ds, stdcb_t cbs[], void *restrict args[], s
 
 __attribute__ ((nonnull (1, 2), nothrow, warn_unused_result))
 int random_op (void *restrict ds, stdcb_t const tests[], size_t ntest) {
-   size_t j = random_range_java_size_t2 ((size_t) 0, ntest);
+   size_t j = random_range_java_size_t2 ((size_t) 0, ntest - 1);
    assert (j <= ntest);
    error_check (tests[j] (arg) != 0) return -1;
    return 0;
