@@ -12,10 +12,10 @@ extern "C" {
 typedef __attribute__ ((warn_unused_result))
 int (*random_range_t) (int min, int max) ;
 
-int range_int (int min, int max)
+unsigned range_int (int min, int max)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
-int random_range_off_naive1 (int r, int off)
+int random_range_off_naive1 (unsigned int r, int off)
 __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 
 int random_range_naive1 (int min, int max)
@@ -24,7 +24,7 @@ __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 int random_range_naive2 (int min, int max)
 __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 
-int random_range_off_java (int n, int off)
+int random_range_off_java (unsigned int n, int off)
 __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 
 int random_range_java (int min, int max)

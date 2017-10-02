@@ -45,7 +45,7 @@ int random_range_off_naive1 (unsigned int r, int off) {
 __attribute__ ((nothrow, warn_unused_result))
 int random_range_naive1 (int min, int max) {
 	TODO (allow other RNGs)
-	int ret = random_range_off_naive1 (range (min, max), min);
+	int ret = random_range_off_naive1 (range_int (min, max), min);
 	assert (min <= ret);
 	assert (ret <= max);
 	return ret;
@@ -54,7 +54,7 @@ int random_range_naive1 (int min, int max) {
 /* the "skew" is a bit better distributed here */
 __attribute__ ((leaf, nothrow, warn_unused_result))
 int random_range_naive2 (int min, int max) {
-	unsigned int n = range (min, max);
+	unsigned int n = range_int (min, max);
 	int tmp;
 	double ret;
 	assert (n != 0);
