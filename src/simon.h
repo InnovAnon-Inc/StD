@@ -48,8 +48,11 @@ __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 size_t range_size_t (size_t min, size_t max)
 __attribute__ ((const, leaf, nothrow, warn_unused_result)) ;
 
-TODO (this algorihtm is probably seriously flawed)
+TODO (this algorithm is probably seriously flawed)
 size_t random_range_java_size_t (size_t min, size_t max)
+__attribute__ ((nothrow, warn_unused_result)) ;
+
+size_t random_range_java_size_t2 (size_t min, size_t max)
 __attribute__ ((nothrow, warn_unused_result)) ;
 
 typedef __attribute__ ((nonnull (1, 2), warn_unused_result))

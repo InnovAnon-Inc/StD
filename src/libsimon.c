@@ -142,6 +142,7 @@ size_t random_range_java_size_t (size_t min, size_t max) {
 	return min + *(size_t *) x % n;
 }
 
+__attribute__ ((nothrow, warn_unused_result))
 size_t random_range_java_size_t2 (size_t min, size_t max) {
 	int tmp;
 	size_t ret;
