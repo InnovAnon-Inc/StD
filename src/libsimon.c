@@ -7,6 +7,7 @@
 
 #include <assert.h>
 #include <limits.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -147,7 +148,7 @@ size_t random_range_java_size_t2 (size_t min, size_t max) {
 	assert (min <= max);
 	assert (max <= SIZE_MAX);
 	tmp = (int) random_range_java ((int) min, (int) max);
-	ret = tmp;
+	ret = (size_t) tmp;
 	assert (min <= ret);
 	assert (ret <= max);
 	return ret;
