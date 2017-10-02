@@ -287,6 +287,18 @@ int random_ops (void *restrict ds, stdcb_t const tests[], size_t ntest,
 	return 0;
 }
 
+__attribute__ ((nonnull (1, 2), nothrow))
+void random_ops2 (void *restrict ds, stdcb_t const tests[], size_t ntest) {
+	int res;
+	while (true) {
+		res = random_op (ds, tests, ntest);
+		/*if (res == TEST_NA) continue;*/
+		error_check (res != 0 && res != TEST_NA) return -1;
+	}
+	assert (false);
+	__builtin_unreachable ();
+}
+
 /* init
  * vs
  * alloc + free

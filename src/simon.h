@@ -90,6 +90,9 @@ int random_ops (void *restrict ds, stdcb_t const tests[], size_t ntest,
 	unsigned int n)
 __attribute__ ((nonnull (1, 2), nothrow, warn_unused_result)) ;
 
+void random_ops2 (void *restrict ds, stdcb_t const tests[], size_t ntest)
+__attribute__ ((nonnull (1, 2), nothrow)) ;
+
 #ifdef __cplusplus
 }
 #endif
