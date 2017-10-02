@@ -101,7 +101,13 @@ int range_int2 (int min, int max) {
 __attribute__ ((leaf, nothrow, warn_unused_result))
 int random_range_java2 (int min, int max) {
 	int r = range_int2 (min, max);
-	return random_range_off_java2 ((unsigned int) r, min);
+	int ret;
+	assert (r >= 1);
+	assert (r == max - min + 1);
+	ret = random_range_off_java2 ((unsigned int) r, min);
+	assert (min <= ret);
+	assert (ret <= max);
+	return ret;
 }
 
 __attribute__ ((leaf, nothrow, warn_unused_result))
@@ -109,6 +115,7 @@ int random_range_off_java2 (unsigned int n, int off) {
 	int r = RAND_MAX % (int) n;
 	int d = RAND_MAX - (int) r;
 	int x;
+	assert (n > 1);
 	do x = rand ();
 	while (x >= d);
 	r = off + x % (int) n;
@@ -193,7 +200,7 @@ size_t random_range_java_size_t2 (size_t min, size_t max) {
 	size_t ret;
 	assert (min <= max);
 	assert (max <= INT_MAX);
-	tmp = random_range_java ((int) min, (int) max);
+	tmp = random_range_java2 ((int) min, (int) max);
 	assert (tmp >= 0);
 	ret = (size_t) tmp;
 	assert (min <= ret);
