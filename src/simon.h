@@ -81,6 +81,8 @@ __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 int random_range_off_java2 (unsigned int n, int off)
 __attribute__ ((leaf, nothrow, warn_unused_result)) ;
 
+#define TEST_NA (10)
+
 int random_op (void *restrict ds, stdcb_t const tests[], size_t ntest)
 __attribute__ ((nonnull (1, 2), nothrow, warn_unused_result)) ;
 
