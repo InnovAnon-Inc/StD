@@ -76,6 +76,7 @@ int random_range_off_java (unsigned int n, int off) {
 	int x;
 	assert (n != 0);
 	assert (n <= INT_MAX);
+	assert (n != 1);
 	r = RAND_MAX % (int) n;
 	d = RAND_MAX - (int) r;
 	do x = rand ();
@@ -150,6 +151,19 @@ size_t random_range_java_size_t2 (size_t min, size_t max) {
 	assert (max <= INT_MAX);
 	tmp = random_range_java ((int) min, (int) max);
 	ret = (size_t) tmp;
+	assert (min <= ret);
+	assert (ret <= max);
+	return ret;
+}
+
+__attribute__ ((nothrow, warn_unused_result))
+ssize_t random_range_java_ssize_t2 (ssize_t min, ssize_t max) {
+	int tmp;
+	ssize_t ret;
+	assert (min <= max);
+	assert (max <= INT_MAX);
+	tmp = random_range_java ((int) min, (int) max);
+	ret = (ssize_t) tmp;
 	assert (min <= ret);
 	assert (ret <= max);
 	return ret;

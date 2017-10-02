@@ -55,6 +55,9 @@ __attribute__ ((nothrow, warn_unused_result)) ;
 size_t random_range_java_size_t2 (size_t min, size_t max)
 __attribute__ ((nothrow, warn_unused_result)) ;
 
+ssize_t random_range_java_ssize_t2 (ssize_t min, ssize_t max)
+__attribute__ ((nothrow, warn_unused_result)) ;
+
 typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
 int (*cmp_t) (void const *restrict, void const *restrict) ;
 
