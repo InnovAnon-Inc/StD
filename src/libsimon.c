@@ -81,8 +81,8 @@ int random_range_off_java (unsigned int n, int off) {
 	d = RAND_MAX - (int) r;
 	do x = rand ();
 	while (x >= d);
-	assert (0 <= x % (int) n);
-	assert (x % (int) n <= n);
+	/*assert (0 <= x % (int) n);
+	assert (x % (int) n <= n);*/
 	r = off + x % (int) n;
 	assert (off <= r);
 	assert (r <= off + (int) n);
