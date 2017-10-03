@@ -333,7 +333,7 @@ int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
    for (i = 0; i != n; i++)
       /* either use array or parray */
       generate (tmp + ?);
-   adds (arg, tmp);
+   adds (arg, tmp, n);
    return 0;
 }
 #endif
@@ -345,7 +345,7 @@ int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
    size_t n = min (maxn, used (arg));
    if (n != 0)
       n = random_range_java_size_t2 ((size_t) 0, n);
-   removes (arg, tmp);
+   removes (arg, tmp, n);
    return 0;
 }
 
