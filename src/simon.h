@@ -94,6 +94,51 @@ NOTE (it is an error for this function to return)
 void random_ops2 (void *restrict ds, stdcb_t const tests[], size_t ntest)
 __attribute__ ((nonnull (1, 2), nothrow)) ;
 
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+bool (*isfull_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+bool (*isempty_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+size_t (*remaining_space_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+size_t (*used_space_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*add_t) (void *restrict ds, void const *restrict e) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*remove_t) (void *restrict ds, void *restrict e) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*adds_t) (void *restrict ds, void const *restrict e, size_t n) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*removes_t) (void *restrict ds, void *restrict e, size_t n) ;
+
+typedef __attribute__ ((nonnull (1)))
+void (*generate_t) (void *restrict dest) ;
+
+int add_test (void *restrict arg, void *restrict tmp,
+   isfull_t full, generate_t generate, add_t add)
+__attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result)) ;
+
+int remove_test (void *restrict arg, void *restrict tmp,
+   isempty_t empty, remove_t add)
+__attribute__ ((nonnull (1, 2, 3, 4), nothrow, warn_unused_result)) ;
+
+#ifdef TEST
+int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
+   remaining_space_t remaining, generate_t generate, adds_t adds)
+__attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result)) ;
+#endif
+
+int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
+   used_space_t used, removes_t removes)
+__attribute__ ((nonnull (1, 2, 4, 5), nothrow, warn_unused_result)) ;
+
 #ifdef __cplusplus
 }
 #endif

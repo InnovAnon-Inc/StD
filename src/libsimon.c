@@ -299,33 +299,6 @@ void random_ops2 (void *restrict ds, stdcb_t const tests[], size_t ntest) {
 	__builtin_unreachable ();
 }
 
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-bool (*isfull_t) (void const *restrict arg) ;
-
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-bool (*isempty_t) (void const *restrict arg) ;
-
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-size_t (*remaining_space_t) (void const *restrict arg) ;
-
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-size_t (*used_space_t) (void const *restrict arg) ;
-
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
-void (*add_t) (void *restrict ds, void const *restrict e) ;
-
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
-void (*remove_t) (void *restrict ds, void *restrict e) ;
-
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
-void (*adds_t) (void *restrict ds, void const *restrict e, size_t n) ;
-
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
-void (*removes_t) (void *restrict ds, void *restrict e, size_t n) ;
-
-typedef __attribute__ ((nonnull (1)))
-void (*generate_t) (void *restrict dest) ;
-
 __attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result))
 int add_test (void *restrict arg, void *restrict tmp,
    isfull_t full, generate_t generate, add_t add) {
