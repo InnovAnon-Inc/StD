@@ -106,16 +106,16 @@ size_t (*remaining_space_t) (void const *restrict arg) ;
 typedef __attribute__ ((nonnull (1), warn_unused_result))
 size_t (*used_space_t) (void const *restrict arg) ;
 
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+typedef __attribute__ ((nonnull (1, 2)))
 void (*add_t) (void *restrict ds, void const *restrict e) ;
 
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+typedef __attribute__ ((nonnull (1, 2)))
 void (*remove_t) (void *restrict ds, void *restrict e) ;
 
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+typedef __attribute__ ((nonnull (1, 2)))
 void (*adds_t) (void *restrict ds, void const *restrict e, size_t n) ;
 
-typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+typedef __attribute__ ((nonnull (1, 2)))
 void (*removes_t) (void *restrict ds, void *restrict e, size_t n) ;
 
 typedef __attribute__ ((nonnull (1)))

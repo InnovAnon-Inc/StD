@@ -315,7 +315,7 @@ int add_test (void *restrict arg, void *restrict tmp,
 
 __attribute__ ((nonnull (1, 2, 3, 4), nothrow, warn_unused_result))
 int remove_test (void *restrict arg, void *restrict tmp,
-   isempty_t empty, remove_t add) {
+   isempty_t empty, remove_t remove) {
    if (empty (arg)) return TEST_NA;
    remove (arg, tmp);
    return 0;
