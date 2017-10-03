@@ -299,6 +299,83 @@ void random_ops2 (void *restrict ds, stdcb_t const tests[], size_t ntest) {
 	__builtin_unreachable ();
 }
 
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+bool (*isfull_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+bool (*isempty_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+size_t (*remaining_space_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1), warn_unused_result))
+size_t (*used_space_t) (void const *restrict arg) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*add_t) (void *restrict ds, void const *restrict e) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*remove_t) (void *restrict ds, void *restrict e) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*adds_t) (void *restrict ds, void const *restrict e, size_t n) ;
+
+typedef __attribute__ ((nonnull (1, 2), warn_unused_result))
+void (*removes_t) (void *restrict ds, void *restrict e, size_t n) ;
+
+typedef __attribute__ ((nonnull (1)))
+void (*generate_t) (void *restrict dest) ;
+
+__attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result))
+int add_test (void *restrict arg, void *restrict tmp,
+   isfull_t full, generate_t generate, add_t add) {
+   if (full (arg)) return TEST_NA;
+   generate (tmp);
+   add (arg, tmp);
+   /*
+   tmp = random_range_java (-10, 10);
+   enqueue (arg, &tmp);
+   dumpq (arg);
+   */
+   return 0;
+}
+
+__attribute__ ((nonnull (1, 2, 3, 4), nothrow, warn_unused_result))
+int remove_test (void *restrict arg, void *restrict tmp,
+   isempty_t empty, remove_t add) {
+   if (empty (arg)) return TEST_NA;
+   remove (arg, tmp);
+   return 0;
+}
+
+#ifdef TEST
+__attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result))
+int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
+   remaining_space_t remaining, generate_t generate, adds_t adds) {
+   size_t i;
+   size_t n = min (maxn, remaining (arg));
+   if (n != 0)
+      n = random_range_java_size_t2 ((size_t) 0, n);
+   /*#pragma GCC ivdep*/
+   for (i = 0; i != n; i++)
+      /* either use array or parray */
+      generate (tmp + ?);
+   adds (arg, tmp);
+   return 0;
+}
+#endif
+
+__attribute__ ((nonnull (1, 2, 4, 5), nothrow, warn_unused_result))
+int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
+   used_space_t used, removes_t removes) {
+   size_t i;
+   size_t n = min (maxn, used (arg));
+   if (n != 0)
+      n = random_range_java_size_t2 ((size_t) 0, n);
+   removes (arg, tmp);
+   return 0;
+}
+
 /* init
  * vs
  * alloc + free
