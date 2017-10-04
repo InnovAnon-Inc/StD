@@ -140,6 +140,17 @@ int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
    used_space_t used, removes_t removes)
 __attribute__ ((nonnull (1, 2, 4, 5), nothrow, warn_unused_result)) ;
 
+typedef __attribute__ ((nonnull (1)))
+void (*frees_t) (void *restrict, size_t n) ;
+
+int remove_test2 (void *restrict arg, void *restrict tmp,
+   isempty_t empty, remove_t remove, free_t f)
+__attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result)) ;
+
+int removes_test2 (void *restrict arg, void *restrict tmp, size_t maxn,
+   used_space_t used, removes_t removes, frees_t f)
+__attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result)) ;
+
 #ifdef __cplusplus
 }
 #endif

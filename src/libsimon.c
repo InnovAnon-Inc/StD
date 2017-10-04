@@ -299,6 +299,7 @@ void random_ops2 (void *restrict ds, stdcb_t const tests[], size_t ntest) {
 	__builtin_unreachable ();
 }
 
+TODO (add wrapper to check sizes)
 __attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result))
 int add_test (void *restrict arg, void *restrict tmp,
    isfull_t full, generate_t generate, add_t add) {
@@ -313,6 +314,7 @@ int add_test (void *restrict arg, void *restrict tmp,
    return 0;
 }
 
+TODO (add wrapper to check sizes)
 __attribute__ ((nonnull (1, 2, 3, 4), nothrow, warn_unused_result))
 int remove_test (void *restrict arg, void *restrict tmp,
    isempty_t empty, remove_t remove) {
@@ -321,6 +323,17 @@ int remove_test (void *restrict arg, void *restrict tmp,
    return 0;
 }
 
+TODO (add wrapper to check sizes)
+__attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result))
+int remove_test2 (void *restrict arg, void *restrict tmp,
+   isempty_t empty, remove_t remove, free_t f) {
+   if (empty (arg)) return TEST_NA;
+   remove (arg, tmp);
+   f (tmp);
+   return 0;
+}
+
+TODO (add wrapper to check sizes)
 __attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result))
 int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
    remaining_space_t remaining, generates_t generates, adds_t adds) {
@@ -339,16 +352,32 @@ int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
    return 0;
 }
 
+TODO (add wrapper to check sizes)
 __attribute__ ((nonnull (1, 2, 4, 5), nothrow, warn_unused_result))
 int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
    used_space_t used, removes_t removes) {
-   size_t i;
    size_t n = min (maxn, used (arg));
    if (n != 0)
       n = random_range_java_size_t2 ((size_t) 0, n);
    removes (arg, tmp, n);
    return 0;
 }
+
+TODO (add wrapper to check sizes)
+__attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result))
+int removes_test2 (void *restrict arg, void *restrict tmp, size_t maxn,
+   used_space_t used, removes_t removes, frees_t f) {
+   size_t i;
+   size_t n = min (maxn, used (arg));
+   if (n != 0)
+      n = random_range_java_size_t2 ((size_t) 0, n);
+   removes (arg, tmp, n);
+   f (tmp, n);
+   return 0;
+}
+
+TODO (insert test)
+TODO (uninsert test)
 
 /* init
  * vs
@@ -358,7 +387,18 @@ int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
  * remove + bulk
  */
 
+/*
+typedef struct {
+	int min, max;
+	int res;
+} generate_int_t;
 
+__attribute__ ((nonnull (1), nothrow))
+void generate_int (void *restrict arg_) {
+   int *restrict arg = (int *restrict) arg_;
+   *arg = random_range_java (-10, 10);
+}
+*/
 
 
 
