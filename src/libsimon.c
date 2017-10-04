@@ -321,22 +321,23 @@ int remove_test (void *restrict arg, void *restrict tmp,
    return 0;
 }
 
-#ifdef TEST
 __attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result))
 int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
-   remaining_space_t remaining, generate_t generate, adds_t adds) {
-   size_t i;
+   remaining_space_t remaining, generates_t generates, adds_t adds) {
+   /*size_t i;*/
    size_t n = min (maxn, remaining (arg));
    if (n != 0)
       n = random_range_java_size_t2 ((size_t) 0, n);
+#ifdef TEST
    /*#pragma GCC ivdep*/
    for (i = 0; i != n; i++)
       /* either use array or parray */
       generate (tmp + ?);
+#endif
+   generates (tmp, n);
    adds (arg, tmp, n);
    return 0;
 }
-#endif
 
 __attribute__ ((nonnull (1, 2, 4, 5), nothrow, warn_unused_result))
 int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,

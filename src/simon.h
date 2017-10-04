@@ -121,6 +121,9 @@ void (*removes_t) (void *restrict ds, void *restrict e, size_t n) ;
 typedef __attribute__ ((nonnull (1)))
 void (*generate_t) (void *restrict dest) ;
 
+typedef __attribute__ ((nonnull (1)))
+void (*generates_t) (void *restrict dest, size_t n) ;
+
 int add_test (void *restrict arg, void *restrict tmp,
    isfull_t full, generate_t generate, add_t add)
 __attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result)) ;
@@ -129,11 +132,9 @@ int remove_test (void *restrict arg, void *restrict tmp,
    isempty_t empty, remove_t add)
 __attribute__ ((nonnull (1, 2, 3, 4), nothrow, warn_unused_result)) ;
 
-#ifdef TEST
 int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
-   remaining_space_t remaining, generate_t generate, adds_t adds)
+   remaining_space_t remaining, generates_t generates, adds_t adds)
 __attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result)) ;
-#endif
 
 int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
    used_space_t used, removes_t removes)
