@@ -324,16 +324,6 @@ int remove_test (void *restrict arg, void *restrict tmp,
 }
 
 TODO (add wrapper to check sizes)
-__attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result))
-int remove_test2 (void *restrict arg, void *restrict tmp,
-   isempty_t empty, remove_t remove, free_t f) {
-   if (empty (arg)) return TEST_NA;
-   remove (arg, tmp);
-   f (tmp);
-   return 0;
-}
-
-TODO (add wrapper to check sizes)
 __attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result))
 int adds_test (void *restrict arg, void *restrict tmp, size_t maxn,
    remaining_space_t remaining, generates_t generates, adds_t adds) {
@@ -363,9 +353,47 @@ int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
    return 0;
 }
 
+
+
+
+
+
+TODO (add wrapper to check sizes)
+__attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result))
+int padd_test (void *restrict arg, void *restrict tmp,
+   isfull_t full, pgenerate_t generate, add_t add) {
+   if (full (arg)) return TEST_NA;
+   error_check (generate (tmp) != 0) return -1;
+   add (arg, tmp);
+   return 0;
+}
+
 TODO (add wrapper to check sizes)
 __attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result))
-int removes_test2 (void *restrict arg, void *restrict tmp, size_t maxn,
+int padds_test (void *restrict arg, void *restrict tmp, size_t maxn,
+   remaining_space_t remaining, pgenerates_t generates, adds_t adds) {
+   /*size_t i;*/
+   size_t n = min (maxn, remaining (arg));
+   if (n != 0)
+      n = random_range_java_size_t2 ((size_t) 0, n);
+   error_check (generates (tmp, n) != 0) return -1;
+   adds (arg, tmp, n);
+   return 0;
+}
+
+TODO (add wrapper to check sizes)
+__attribute__ ((nonnull (1, 2, 3, 4, 5), nothrow, warn_unused_result))
+int premove_test (void *restrict arg, void *restrict tmp,
+   isempty_t empty, remove_t remove, free_t f) {
+   if (empty (arg)) return TEST_NA;
+   remove (arg, tmp);
+   f (tmp);
+   return 0;
+}
+
+TODO (add wrapper to check sizes)
+__attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result))
+int premoves_test (void *restrict arg, void *restrict tmp, size_t maxn,
    used_space_t used, removes_t removes, frees_t f) {
    size_t i;
    size_t n = min (maxn, used (arg));
