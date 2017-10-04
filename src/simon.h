@@ -8,6 +8,7 @@ extern "C" {
 #include <sys/types.h>
 
 #include <glitter.h>
+#include <dsint.h>
 
 typedef __attribute__ ((warn_unused_result))
 int (*random_range_t) (int min, int max) ;
@@ -94,29 +95,7 @@ NOTE (it is an error for this function to return)
 void random_ops2 (void *restrict ds, stdcb_t const tests[], size_t ntest)
 __attribute__ ((nonnull (1, 2), nothrow)) ;
 
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-bool (*isfull_t) (void const *restrict arg) ;
 
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-bool (*isempty_t) (void const *restrict arg) ;
-
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-size_t (*remaining_space_t) (void const *restrict arg) ;
-
-typedef __attribute__ ((nonnull (1), warn_unused_result))
-size_t (*used_space_t) (void const *restrict arg) ;
-
-typedef __attribute__ ((nonnull (1, 2)))
-void (*add_t) (void *restrict ds, void const *restrict e) ;
-
-typedef __attribute__ ((nonnull (1, 2)))
-void (*remove_t) (void *restrict ds, void *restrict e) ;
-
-typedef __attribute__ ((nonnull (1, 2)))
-void (*adds_t) (void *restrict ds, void const *restrict e, size_t n) ;
-
-typedef __attribute__ ((nonnull (1, 2)))
-void (*removes_t) (void *restrict ds, void *restrict e, size_t n) ;
 
 typedef __attribute__ ((nonnull (1)))
 void (*generate_t) (void *restrict dest) ;
@@ -139,9 +118,6 @@ __attribute__ ((nonnull (1, 2, 4, 5, 6), nothrow, warn_unused_result)) ;
 int removes_test (void *restrict arg, void *restrict tmp, size_t maxn,
    used_space_t used, removes_t removes)
 __attribute__ ((nonnull (1, 2, 4, 5), nothrow, warn_unused_result)) ;
-
-typedef __attribute__ ((nonnull (1)))
-void (*frees_t) (void *restrict, size_t n) ;
 
 int remove_test2 (void *restrict arg, void *restrict tmp,
    isempty_t empty, remove_t remove, free_t f)
