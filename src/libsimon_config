@@ -1,0 +1,7 @@
+#! /bin/bash
+set -eu
+[ $# -eq 1 ]
+[ $1 == --libs ]
+#echo -lstat `libstat_config --libs`
+echo
+

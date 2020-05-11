@@ -26,6 +26,9 @@ AC_CHECK_LIB([stdlib],[malloc,free])
 AC_CHECK_LIB([stdlib],[memcpy])
 #AC_CHECK_LIB([sum],[ezr_sum])
 
+LIBSIMON_LIBADD="`PATH=src:$PATH libsimon_config --libs`"
+AC_SUBST(LIBSIMON_LIBADD)
+
 INNOVANON_WARNINGS([])
 
 AC_OUTPUT
