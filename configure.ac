@@ -30,7 +30,7 @@ srcdir = @srcdir@
 LIBSIMON_LIBADD="`PATH=$(srcdir)src:$PATH libsimon_config --libs`"
 AC_SUBST(LIBSIMON_LIBADD)
 
-SIMON_TEST_LIBADD=`PATH=$(srcdir)src:$PATH simon_test_config --libs`"
+SIMON_TEST_LIBADD="`PATH=$(srcdir)src:$PATH simon_test_config --libs`"
 AC_SUBST(SIMON_TEST_LIBADD)
 
 INNOVANON_WARNINGS([])
