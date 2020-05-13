@@ -26,11 +26,13 @@ AC_CHECK_LIB([stdlib],[malloc,free])
 AC_CHECK_LIB([stdlib],[memcpy])
 #AC_CHECK_LIB([sum],[ezr_sum])
 
-srcdir = @srcdir@
-LIBSIMON_LIBADD="`PATH=$(srcdir)src:$PATH libsimon_config --libs`"
+#srcdir = @srcdir@
+#LIBSIMON_LIBADD="`PATH=$(srcdir)src:$PATH libsimon_config --libs`"
+LIBSIMON_LIBADD="`PATH=src:$PATH libsimon_config --libs`"
 AC_SUBST(LIBSIMON_LIBADD)
 
-SIMON_TEST_LIBADD="`PATH=$(srcdir)src:$PATH simon_test_config --libs`"
+#SIMON_TEST_LIBADD="`PATH=$(srcdir)src:$PATH simon_test_config --libs`"
+SIMON_TEST_LIBADD="`PATH=src:$PATH simon_test_config --libs`"
 AC_SUBST(SIMON_TEST_LIBADD)
 
 INNOVANON_WARNINGS([])
