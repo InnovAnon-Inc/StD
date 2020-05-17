@@ -29,6 +29,7 @@ AC_CHECK_LIB([stdlib],[memcpy])
 #AC_CHECK_LIB([sum],[ezr_sum])
 
 PKG_CHECK_MODULES([GLITTER],[glitter],,)
+PKG_CHECK_MODULES([SWAP],[swap],,)
 
 INNOVANON_WARNINGS([])
 
