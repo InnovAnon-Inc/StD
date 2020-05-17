@@ -12,5 +12,5 @@ Libs: -L${libdir} -lsimon
 Cflags: -I${includedir}
 Requires:
 #Requires.private: -lsimon -lswap
-Requires.private: -lsimon libswap
+Requires.private: libsimon libswap
 
