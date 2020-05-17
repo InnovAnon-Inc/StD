@@ -8,32 +8,27 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
  Makefile
  src/Makefile
+ src/simon.pc
+ src/simon-test.pc
 ])
+
+PKG_PROG_PKG_CONFIG
 
 AC_ARG_ENABLE([use-submodules],
     AS_HELP_STRING([--enable-use-submodules], [Enable use submodules]))
 AM_CONDITIONAL([USE_SUBMODULES], [test x"$enable_use_submodules" = "xyes"])
 
 AC_CONFIG_MACRO_DIR([m4])
-#AC_CONFIG_SUBDIRS([glitter ZePaSt])
-#AC_CONFIG_SUBDIRS([glitter])
 
 AC_CHECK_HEADERS([stdlib.h sys/types.h string.h])
 #AC_CHECK_HEADERS([glitter.h sum.h])
-AC_CHECK_HEADERS([glitter.h])
+#AC_CHECK_HEADERS([glitter.h])
 
 AC_CHECK_LIB([stdlib],[malloc,free])
 AC_CHECK_LIB([stdlib],[memcpy])
 #AC_CHECK_LIB([sum],[ezr_sum])
 
-#srcdir = @srcdir@
-#LIBSIMON_LIBADD="`PATH=$(srcdir)src:$PATH libsimon_config --libs`"
-LIBSIMON_LIBADD="`PATH=src:$PATH libsimon_config --libs`"
-AC_SUBST(LIBSIMON_LIBADD)
-
-#SIMON_TEST_LIBADD="`PATH=$(srcdir)src:$PATH simon_test_config --libs`"
-SIMON_TEST_LIBADD="`PATH=src:$PATH simon_test_config --libs`"
-AC_SUBST(SIMON_TEST_LIBADD)
+PKG_CHECK_MODULES([GLITTER],[glitter],,)
 
 INNOVANON_WARNINGS([])
 

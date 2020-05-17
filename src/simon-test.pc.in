@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+simon_utility=simon-test
+
+Name: @PACKAGE_NAME@ test
+Description: simon library test appliccation
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lsimon
+Cflags: -I${includedir}
+Requires:
+Requires.private: simon
+
