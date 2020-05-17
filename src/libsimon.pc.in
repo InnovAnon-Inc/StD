@@ -11,5 +11,5 @@ Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -lsimon
 Cflags: -I${includedir}
 Requires: glitter
-Requires.private:
+Requires.private: -lswap
 

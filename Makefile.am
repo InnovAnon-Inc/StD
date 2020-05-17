@@ -1,9 +1,9 @@
 # Install the pkg-config file.
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = src/simon.pc src/simon-test.pc
+pkgconfig_DATA = src/libsimon.pc src/simon-test.pc
 
 DISTCLEANFILES = $(pkgconfig_DATA)
-EXTRA_DIST = src/simon.pc.in src/simon-test.pc.in
+EXTRA_DIST = src/libsimon.pc.in src/simon-test.pc.in
 
 SUBDIRS = src
 dist_doc_DATA = README.md
