@@ -11,5 +11,6 @@ Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -lsimon
 Cflags: -I${includedir}
 Requires:
-Requires.private: -lsimon -lswap
+#Requires.private: -lsimon -lswap
+Requires.private: -lsimon libswap
 
