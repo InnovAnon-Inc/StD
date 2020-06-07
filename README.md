@@ -3,6 +3,7 @@ S(imon), t(he) D(rawer-er) (C Port)
 ==========
 
 > You cheeky monkey, you
+> -- Simon, the Drawer-er
 ----------
 
 The original idea answers a question that wasn't asked:
